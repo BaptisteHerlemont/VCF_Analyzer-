@@ -28,9 +28,10 @@ library(reticulate)
 ```
 
 ```{r setup, include=FALSE}
-input_vcf_file <- "PEAMUST_vfaba_F2a.vcf.gz"
-output_csv_file_bySite <- "Variants_SITE.csv"
-output_csv_file_byGeno <- "Variants_GENOTYPE.csv"
+input_vcf_file <- "YourInputFileName.vcf.gz"  # Change "YourInputFileName.vcf.gz" to the name of your VCF file
+output_csv_file_bySite <- "OutputFileNameBySite.csv"  # Change "OutputFileNameBySite.csv" to your desired output file name for site data
+output_csv_file_byGeno <- "OutputFileNameByGeno.csv"  # Change "OutputFileNameByGeno.csv" to your desired output file name for genotype data
+
 
 ```
 
