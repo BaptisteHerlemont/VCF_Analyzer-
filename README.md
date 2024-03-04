@@ -12,9 +12,11 @@ This project provides a script for analyzing Variant Call Format (VCF) files to 
 
 To use this project, you will need the following installed on your system:
 
-- Python 3.x
-- R
-- Quarto
+(Versions of the programs used during development)
+
+- Python 3.10.13
+- R 4.1.2 
+- Quarto (RStudio)
 - The Python package `cyvcf2`
 - Necessary R libraries for data processing and report generation
 
