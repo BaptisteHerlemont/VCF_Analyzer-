@@ -25,40 +25,43 @@ To use this project, you will need the following installed on your system:
 1. Clone the repository to your local machine:
 
     ```bash
-    git clone https://yourrepository.github.com/vcf-analyzer.git
+    git clone https://github.com/BaptisteHerlemont/VCF_Analyzer-.git
     ```
 
 2. Install Python dependencies:
 
     ```bash
-    pip install cyvcf2
+    pip3 install cyvcf2
     ```
 
 3. Ensure you have the required R dependencies installed.
 
 ## Usage
 
-To start the analysis and generate the report:
+To start the analysis and generate the report, follow these steps:
 
-1. Place your VCF file in the appropriate directory.
-2. Run the main script (add specific commands here).
-3. The generated HTML report will be available in the output directory.
+1. Ensure the Quarto script is in the same directory as your VCF file.
+2. Open the Quarto script in RStudio. You can modify the names of the input and output files within the script as shown below:
 
-## Project Structure
+    ```r
+    {r setup, include=FALSE}
+    input_vcf_file <- "YourInputFileName.vcf.gz"  # Change "YourInputFileName.vcf.gz" to the name of your VCF file
+    output_csv_file_bySite <- "OutputFileNameBySite.csv"  # Change "OutputFileNameBySite.csv" to your desired output file name for site data
+    output_csv_file_byGeno <- "OutputFileNameByGeno.csv"  # Change "OutputFileNameByGeno.csv" to your desired output file name for genotype data
+    ```
 
-- `script.py`: Python script for the initial analysis of the VCF file.
-- `report.qmd`: Quarto (R) script for report generation.
-- `/data`: Directory for input VCF files.
-- `/output`: Directory for output files and generated reports.
+    Replace `YourInputFileName.vcf.gz`, `OutputFileNameBySite.csv`, and `OutputFileNameByGeno.csv` with the actual names of your files.
+
+3. After setting up the file names, run the Quarto script to perform the analysis. The generated HTML report and CSV files will be available in the output directory.
+
+*Note: All figures generated in the report are colorblind friendly, ensuring accessibility for all users.*
+
 
 ## Contributing
 
 Contributions to this project are welcome. If you wish to contribute, please fork the repository, create a branch for your changes, and submit a pull request.
 
-## License
-
-This project is distributed under the MIT License. See the `LICENSE` file for more details.
 
 ## Contact
 
-For any questions or suggestions, feel free to open an issue in the GitHub repository or contact me directly (add your contact information).
+For any questions or suggestions, feel free to open an issue in the GitHub repository.
