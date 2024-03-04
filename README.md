@@ -27,6 +27,7 @@ To use this project, you will need the following installed on your system:
     ```bash
     git clone https://github.com/BaptisteHerlemont/VCF_Analyzer-.git
     ```
+*You can simply download the file `vcf.qmd` without using Git.*
 
 2. Install Python dependencies:
 
