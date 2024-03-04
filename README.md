@@ -36,6 +36,22 @@ To use this project, you will need the following installed on your system:
 
 3. Ensure you have the required R dependencies installed.
 
+
+The analysis relies on various R libraries. You can install these libraries by running the following commands in your R console or RStudio:
+
+```r
+install.packages("ggplot2")
+install.packages("dplyr")
+install.packages("knitr")
+install.packages("MetBrewer")
+install.packages("tidyr")
+install.packages("plotly")
+install.packages("viridis")
+install.packages("reticulate") 
+```
+If you encounter no errors, you're ready to proceed with the analysis.
+
+
 ## Usage
 
 To start the analysis and generate the report, follow these steps:
