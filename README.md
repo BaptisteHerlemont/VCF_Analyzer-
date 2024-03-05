@@ -82,3 +82,11 @@ Contributions to this project are welcome. If you wish to contribute, please for
 ## Contact
 
 For any questions or suggestions, feel free to open an issue in the GitHub repository.
+
+## How to Cite
+
+If you use this tool in your research, please include the following citation in your work:
+
+Herlemont Baptiste.2024.Vcf Analyzer.https://github.com/BaptisteHerlemont/VCF_Analyzer-. License: MIT License.
+
+
