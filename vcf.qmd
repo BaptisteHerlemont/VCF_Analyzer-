@@ -248,7 +248,6 @@ ggplot(data, aes(x = Genotype)) +
     name = "Type",
     labels = c("SNP" = "SNP", "INDEL" = "INDEL")
   )} else if (has_snp) {
-    # Graphique uniquement pour SNP
     ggplot(data, aes(x = Genotype)) +
       geom_bar(aes(y = SNP_missing, fill = "SNP"), width = 1.1, stat = "identity", position = position_dodge(width = 1.1), alpha = 0.9) +
       ylim(-max_value, max_value) +
@@ -286,11 +285,10 @@ percentage_to_show <- 0.05
 num_genotypes_to_show <- ceiling((nrow(data) * percentage_to_show))
 
 if (!has_snp & has_indel) {
-  # Tableau pour les INDELs si uniquement des INDELs sont présents
   top_genotypes <- data %>%
     arrange(desc(INDEL_missing)) %>%
     head(num_genotypes_to_show) %>%
-    select(Genotype, INDEL_missing, SNP_missing) # Sélection des colonnes souhaitées
+    select(Genotype, INDEL_missing, SNP_missing) 
 
   cat("Here are the", percentage_to_show * 100, "% of genotypes with the highest values of missing INDELs (",num_genotypes_to_show,") \n")
   kable(top_genotypes)
@@ -298,7 +296,7 @@ if (!has_snp & has_indel) {
   top_genotypes <- data %>%
     arrange(desc(SNP_missing)) %>%
     head(num_genotypes_to_show) %>%
-    select(Genotype, INDEL_missing, SNP_missing) # Sélection des colonnes souhaitées
+    select(Genotype, INDEL_missing, SNP_missing)
 
   cat("Here are the", percentage_to_show * 100, "% of genotypes with the highest values of missing SNPs (",num_genotypes_to_show,") \n")
   kable(top_genotypes)
@@ -350,19 +348,16 @@ ggplot(file_genotypes, aes(x = Genotype)) +
   ) +
   theme(
     axis.text.x = element_blank(),
-    legend.position = "right" # ou "bottom" si vous préférez la légende en bas
+    legend.position = "right" 
   )
 } else if (!has_snp & has_indel) {
-  # Tri des données par ordre croissant de INDEL_missing
   file_genotypes_sorted <- file_genotypes[order(file_genotypes$INDEL_missing), ]
   
-  # Calcul des seuils pour INDEL_missing
   max_indel_missing <- max(file_genotypes_sorted$INDEL_missing)
   genotype90_indel <- as.numeric(head(file_genotypes_sorted$Genotype[file_genotypes_sorted$INDEL_missing >= 0.9 * max_indel_missing], n = 1))
   genotype80_indel <- as.numeric(tail(file_genotypes_sorted$Genotype[file_genotypes_sorted$INDEL_missing >= 0.8 * max_indel_missing], n = 1))
   genotype70_indel <- as.numeric(tail(file_genotypes_sorted$Genotype[file_genotypes_sorted$INDEL_missing >= 0.7 * max_indel_missing], n = 1))
 
-  # Création du graphique
   ggplot(file_genotypes_sorted, aes(x = reorder(Genotype, INDEL_missing))) +
     geom_bar(aes(y = INDEL_missing, fill = "INDEL_Missing"), stat = "identity") +
     geom_vline(aes(xintercept = genotype90_indel, color = "90% Threshold"), linetype = "solid", linewidth = 1.5) +
@@ -394,7 +389,6 @@ total_rows <- nrow(file_genotypes)
 
 thresholds <- c(0.9, 0.8, 0.7)
 if (has_snp) {
-  # Cas où il y a des SNP (et éventuellement des INDELs)
   max_snp_missing <- max(file_genotypes$SNP_missing)
 
   summary_data <- lapply(thresholds, function(threshold) {
@@ -405,7 +399,6 @@ if (has_snp) {
   })
 
 } else if (has_indel) {
-  # Cas où il n'y a que des INDELs
   max_indel_missing <- max(file_genotypes$INDEL_missing)
 
   summary_data <- lapply(thresholds, function(threshold) {
